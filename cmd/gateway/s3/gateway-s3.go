@@ -195,17 +195,19 @@ func (g *S3) new(creds madmin.Credentials, transport http.RoundTripper) (*miniog
 	}
 
 	optionsStaticCreds := &miniogo.Options{
-		Creds:        credentials.NewStaticV4(creds.AccessKey, creds.SecretKey, creds.SessionToken),
-		Secure:       secure,
-		Region:       s3utils.GetRegionFromURL(*u),
+		Creds:  credentials.NewStaticV4(creds.AccessKey, creds.SecretKey, creds.SessionToken),
+		Secure: secure,
+		Region: "ap1",
+		// Region:       s3utils.GetRegionFromURL(*u),
 		BucketLookup: miniogo.BucketLookupAuto,
 		Transport:    transport,
 	}
 
 	optionsChainCreds := &miniogo.Options{
-		Creds:        chainCreds,
-		Secure:       secure,
-		Region:       s3utils.GetRegionFromURL(*u),
+		Creds:  chainCreds,
+		Secure: secure,
+		Region: "ap1",
+		// Region:       s3utils.GetRegionFromURL(*u),
 		BucketLookup: miniogo.BucketLookupAuto,
 		Transport:    transport,
 	}
